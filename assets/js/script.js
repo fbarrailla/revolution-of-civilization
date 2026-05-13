@@ -60,7 +60,7 @@
   if (year) year.textContent = new Date().getFullYear();
 
   /* ===== Smooth scroll offset for sticky header ===== */
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  document.querySelectorAll('a[href^="#"]:not(.js-donate)').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var id = a.getAttribute('href');
       if (id.length < 2) return;
@@ -72,4 +72,60 @@
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
   });
+
+  /* ===== Donation modal ===== */
+  var modal = document.getElementById('donateModal');
+  if (modal) {
+    var lastFocus = null;
+
+    var openModal = function () {
+      lastFocus = document.activeElement;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('donate-modal-open');
+      var firstOpt = modal.querySelector('.donate-option');
+      if (firstOpt) {
+        // delay focus until transition starts so screen readers see the dialog
+        setTimeout(function () { firstOpt.focus(); }, 60);
+      }
+    };
+
+    var closeModal = function () {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('donate-modal-open');
+      if (lastFocus && typeof lastFocus.focus === 'function') {
+        lastFocus.focus();
+      }
+    };
+
+    document.querySelectorAll('.js-donate').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        // close mobile nav if open
+        if (nav && nav.classList.contains('is-open')) {
+          nav.classList.remove('is-open');
+          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        }
+        openModal();
+      });
+    });
+
+    modal.querySelectorAll('[data-close]').forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+
+    // Close after a PayPal option is clicked (it opens in a new tab)
+    modal.querySelectorAll('.donate-option').forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        setTimeout(closeModal, 150);
+      });
+    });
+  }
 })();
