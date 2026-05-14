@@ -1293,7 +1293,60 @@ body.donate-modal-open { overflow: hidden; }
   font-size: 15px;
   color: var(--c-ink-soft);
   line-height: 1.55;
-  margin: 0 0 28px;
+  margin: 0 0 22px;
+}
+
+/* ----- Tabs ----- */
+.donate-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 5px;
+  background: rgba(26, 58, 46, 0.06);
+  border-radius: 14px;
+  margin-bottom: 24px;
+}
+.donate-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--c-green-700);
+  background: transparent;
+  border-radius: 10px;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.donate-tab:hover { color: var(--c-green-900); }
+.donate-tab.is-active {
+  background: #fff;
+  color: var(--c-green-800);
+  box-shadow: 0 4px 12px rgba(13, 40, 32, 0.08);
+}
+.donate-tab svg { flex-shrink: 0; }
+
+/* ----- Panels ----- */
+.donate-tab-panel { display: none; }
+.donate-tab-panel.is-active { display: block; animation: fade-in 0.25s ease; }
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.donate-panel-hint {
+  font-size: 13px;
+  color: var(--c-muted);
+  margin: 0 0 18px;
+  text-align: left;
+  line-height: 1.5;
+}
+.donate-panel-hint a {
+  color: var(--c-gold-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .donate-options {
@@ -1388,15 +1441,170 @@ body.donate-modal-open { overflow: hidden; }
   color: var(--c-muted);
   margin: 0;
   padding-top: 18px;
+  margin-top: 18px;
   border-top: 1px dashed var(--c-line);
 }
 .donate-modal-foot em { color: var(--c-green-700); }
+
+/* ----- Bank ----- */
+.bank-card {
+  background: #fff;
+  border: 1.5px solid var(--c-line);
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: left;
+}
+.bank-logo {
+  background: linear-gradient(135deg, #003d82, #0050aa);
+  color: #fff;
+  font-family: var(--f-serif);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.08em;
+  padding: 20px 22px;
+  text-align: center;
+}
+.bank-fields {
+  padding: 18px 22px 22px;
+  display: grid;
+  gap: 14px;
+}
+.bank-row {
+  display: grid;
+  gap: 4px;
+}
+.bank-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+.bank-value {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--c-green-800);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.bank-value-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+.bank-value-wrap .bank-value {
+  font-size: 22px;
+  letter-spacing: 0.04em;
+}
+
+/* ----- Crypto ----- */
+.crypto-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 22px;
+  align-items: center;
+  background: #fff;
+  border: 1.5px solid var(--c-line);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: left;
+}
+.crypto-qr {
+  background: #fff;
+  padding: 10px;
+  border: 1.5px solid var(--c-gold-400);
+  border-radius: 12px;
+  flex-shrink: 0;
+  line-height: 0;
+}
+.crypto-qr img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.crypto-info {
+  min-width: 0;
+}
+.crypto-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 6px;
+}
+.crypto-address-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--c-cream);
+  border: 1px solid var(--c-line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.crypto-address {
+  flex: 1;
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--c-green-800);
+  word-break: break-all;
+  line-height: 1.4;
+}
+.crypto-warn {
+  font-size: 12px;
+  color: var(--c-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ----- Copy button (shared) ----- */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--c-green-800);
+  background: var(--c-cream);
+  border: 1px solid var(--c-gold-400);
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+}
+.copy-btn:hover {
+  background: var(--c-gold-500);
+  color: var(--c-green-900);
+  border-color: var(--c-gold-500);
+}
+.copy-btn.is-copied {
+  background: var(--c-green-700);
+  color: var(--c-gold-300);
+  border-color: var(--c-green-700);
+}
+.copy-btn.is-copied .copy-btn-label { font-size: 0; }
+.copy-btn.is-copied .copy-btn-label::before {
+  content: "Tersalin ✓";
+  font-size: 12px;
+}
+.copy-btn.is-copied svg { display: none; }
 
 @media (max-width: 480px) {
   .donate-modal { padding: 16px; }
   .donate-modal-dialog { padding: 40px 22px 28px; }
   .donate-option { padding: 16px 18px; gap: 14px; }
   .donate-option-amount { font-size: 26px; min-width: 56px; }
+  .donate-tab { padding: 9px 8px; font-size: 12px; }
+  .donate-tab span { display: none; }
+  .crypto-card { grid-template-columns: 1fr; text-align: center; }
+  .crypto-qr { justify-self: center; }
+  .crypto-info { text-align: left; }
 }
 
 @media (prefers-reduced-motion: reduce) {

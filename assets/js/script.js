@@ -127,5 +127,81 @@
         setTimeout(closeModal, 150);
       });
     });
+
+    /* ----- Tabs ----- */
+    var tabs = modal.querySelectorAll('.donate-tab');
+    var panels = modal.querySelectorAll('.donate-tab-panel');
+    var activateTab = function (name) {
+      tabs.forEach(function (t) {
+        var on = t.dataset.tab === name;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach(function (p) {
+        var on = p.id === 'tab-' + name;
+        p.classList.toggle('is-active', on);
+        if (on) p.removeAttribute('hidden');
+        else p.setAttribute('hidden', '');
+      });
+    };
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () { activateTab(t.dataset.tab); });
+      t.addEventListener('keydown', function (e) {
+        var order = ['paypal', 'bank', 'crypto'];
+        var idx = order.indexOf(t.dataset.tab);
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          var next = order[(idx + 1) % order.length];
+          activateTab(next);
+          modal.querySelector('[data-tab="' + next + '"]').focus();
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          var prev = order[(idx - 1 + order.length) % order.length];
+          activateTab(prev);
+          modal.querySelector('[data-tab="' + prev + '"]').focus();
+        }
+      });
+    });
+
+    /* ----- Copy buttons ----- */
+    modal.querySelectorAll('.copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = document.querySelector(btn.dataset.copyTarget);
+        if (!target) return;
+        var text = target.textContent.trim();
+        var done = function () {
+          btn.classList.add('is-copied');
+          setTimeout(function () { btn.classList.remove('is-copied'); }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(function () {
+            // fallback
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+            done();
+          });
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(ta);
+          done();
+        }
+      });
+    });
+
+    /* ----- Internal links that should close the modal & jump ----- */
+    modal.querySelectorAll('[data-close-after]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeModal();
+      });
+    });
   }
 })();
