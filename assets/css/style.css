@@ -963,6 +963,204 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ============================================================
+   DONATORS
+   ============================================================ */
+.section-donators {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(168,132,47,0.12), transparent 50%),
+    radial-gradient(circle at 85% 100%, rgba(26,58,46,0.08), transparent 50%),
+    var(--c-paper);
+}
+
+.donors-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 56px;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, var(--c-green-800), var(--c-green-700));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.donors-stats::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(241,196,15,0.12), transparent 60%);
+  pointer-events: none;
+}
+.d-stat {
+  position: relative;
+  text-align: center;
+}
+.d-stat + .d-stat {
+  border-left: 1px solid rgba(247,241,227,0.12);
+}
+.d-stat-num {
+  font-family: var(--f-serif);
+  font-weight: 700;
+  font-size: clamp(38px, 6vw, 60px);
+  line-height: 1;
+  background: linear-gradient(135deg, var(--c-gold-400), var(--c-gold-600));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.01em;
+}
+.d-stat-label {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(247,241,227,0.85);
+}
+.d-stat-label span {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--c-gold-300);
+}
+
+.donors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 0 0 48px;
+}
+
+.donor-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid var(--c-line);
+  border-radius: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.donor-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--c-gold-400);
+  box-shadow: var(--shadow);
+}
+
+.donor-card.donor-top {
+  background: linear-gradient(135deg, #fff, var(--c-cream));
+  border-color: var(--c-gold-500);
+  box-shadow: 0 10px 24px rgba(168,132,47,0.18);
+  position: relative;
+}
+.donor-card.donor-top::before {
+  content: "★ Top";
+  position: absolute;
+  top: -10px;
+  right: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  background: linear-gradient(135deg, var(--c-gold-600), var(--c-gold-400));
+  color: var(--c-green-900);
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(168,132,47,0.35);
+}
+
+.donor-avatar {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--c-green-700), var(--c-green-500));
+  color: var(--c-gold-300);
+  font-family: var(--f-serif);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(26,58,46,0.18);
+}
+.donor-card.donor-top .donor-avatar {
+  background: linear-gradient(135deg, var(--c-fire-red), var(--c-fire-orange));
+  color: #fff;
+}
+
+.donor-body { min-width: 0; }
+.donor-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-green-800);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.donor-channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+}
+.ch {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.ch-paypal { background: rgba(0, 61, 130, 0.1); color: #003d82; }
+.ch-bank   { background: rgba(26, 58, 46, 0.08); color: var(--c-green-700); }
+.ch-crypto { background: rgba(192, 57, 43, 0.10); color: var(--c-fire-red); }
+
+.donor-amount {
+  font-family: var(--f-serif);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--c-gold-600);
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.donor-card.donor-top .donor-amount {
+  background: linear-gradient(135deg, var(--c-gold-600), var(--c-gold-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 28px;
+}
+
+.donors-cta {
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .donors-stats { padding: 24px 16px; gap: 12px; }
+  .d-stat + .d-stat { border-left: 0; }
+  .donors-stats { grid-template-columns: 1fr 1fr 1fr; }
+  .d-stat-label { font-size: 10px; letter-spacing: 0.14em; }
+  .d-stat-label span { font-size: 10px; }
+}
+@media (max-width: 480px) {
+  .donors-stats { grid-template-columns: 1fr; }
+  .donors-stats .d-stat + .d-stat {
+    padding-top: 18px;
+    border-top: 1px solid rgba(247,241,227,0.12);
+  }
+}
+
+/* ============================================================
    MEMBERSHIP
    ============================================================ */
 .section-membership { background: var(--c-paper); }

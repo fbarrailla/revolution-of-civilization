@@ -33,8 +33,8 @@
   /* ===== Auto-decorate sections for scroll reveal ===== */
   var revealTargets = document.querySelectorAll(
     '.section-head, .about-card, .mission-item, .vision-text, .vision-visual, ' +
-    '.function-wrap, .donation-card, .membership-text, .membership-card, ' +
-    '.gallery-item, .contact-card'
+    '.function-wrap, .donation-card, .donors-stats, .donor-card, ' +
+    '.membership-text, .membership-card, .gallery-item, .contact-card'
   );
   revealTargets.forEach(function (el, i) {
     el.classList.add('reveal');
