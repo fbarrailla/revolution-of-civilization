@@ -2,6 +2,33 @@
 (function () {
   'use strict';
 
+  /* ===== Language switcher ===== */
+  var STORAGE_KEY = 'roc-lang';
+  var getLang = function () {
+    var current = document.documentElement.getAttribute('lang');
+    return current === 'en' ? 'en' : 'id';
+  };
+  var setLang = function (lang) {
+    if (lang !== 'en' && lang !== 'id') return;
+    document.documentElement.setAttribute('lang', lang);
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.classList.toggle('is-active', btn.dataset.langSet === lang);
+      btn.setAttribute('aria-pressed', String(btn.dataset.langSet === lang));
+    });
+    // Update <title> to match language
+    var titles = {
+      id: 'Revolution of Civilization — Membangun Peradaban, Menebar Kebaikan',
+      en: 'Revolution of Civilization — Building Civilization, Spreading Kindness'
+    };
+    document.title = titles[lang];
+  };
+  // Init from current attribute (set by inline script before DOM parse)
+  setLang(getLang());
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () { setLang(btn.dataset.langSet); });
+  });
+
   /* ===== Mobile nav toggle ===== */
   var toggle = document.getElementById('navToggle');
   var nav = document.getElementById('primaryNav');

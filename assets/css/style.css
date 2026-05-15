@@ -119,6 +119,42 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ============================================================
+   I18N — language visibility
+   ============================================================ */
+.lang-id, .lang-en { display: inline; }
+html[lang="id"] .lang-en { display: none !important; }
+html[lang="en"] .lang-id { display: none !important; }
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 3px;
+  background: rgba(26, 58, 46, 0.06);
+  border: 1px solid var(--c-line);
+  border-radius: 999px;
+}
+.lang-btn {
+  padding: 5px 11px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--c-green-700);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  background: transparent;
+  border: 0;
+}
+.lang-btn:hover { color: var(--c-green-900); }
+.lang-btn.is-active {
+  background: linear-gradient(135deg, var(--c-green-700), var(--c-green-500));
+  color: var(--c-cream);
+  box-shadow: 0 2px 6px rgba(26,58,46,0.18);
+}
+.nav-lang-mobile { display: none; }
+
+/* ============================================================
    HEADER / NAVIGATION
    ============================================================ */
 .site-header {
@@ -273,6 +309,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   }
   .nav-toggle { display: inline-flex; }
   .nav-cta { display: none; }
+  .nav-lang { display: none; }
+  .nav-lang-mobile {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--c-line);
+  }
   .nav-cta-mobile {
     display: block;
     margin-top: 10px;
@@ -709,6 +753,156 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .function-text strong { color: var(--c-gold-600); font-weight: 700; }
 .function-text em { font-style: italic; color: var(--c-fire-red); }
 .function-text .muted { color: var(--c-muted); font-size: 0.7em; }
+
+/* ============================================================
+   FOCUS AREAS
+   ============================================================ */
+.section-focus {
+  padding: 100px 0;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(192,57,43,0.05), transparent 55%),
+    radial-gradient(circle at 5% 95%, rgba(168,132,47,0.06), transparent 55%),
+    var(--c-paper);
+}
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 48px;
+}
+.focus-card {
+  position: relative;
+  padding: 28px 22px 24px;
+  background: #fff;
+  border: 1px solid var(--c-line);
+  border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
+}
+.focus-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--c-gold-500), var(--c-gold-400));
+}
+.focus-card.focus-tumor::before    { background: linear-gradient(90deg, var(--c-fire-red), var(--c-fire-orange)); }
+.focus-card.focus-mosque::before   { background: linear-gradient(90deg, var(--c-green-700), var(--c-green-500)); }
+.focus-card.focus-elderly::before  { background: linear-gradient(90deg, var(--c-gold-600), var(--c-gold-400)); }
+.focus-card.focus-orphans::before  { background: linear-gradient(90deg, var(--c-fire-orange), var(--c-fire-yellow)); }
+
+.focus-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--c-gold-400);
+  box-shadow: var(--shadow);
+}
+
+.focus-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--c-cream), #fff);
+  border: 1px solid var(--c-line);
+  color: var(--c-green-700);
+  margin-bottom: 16px;
+}
+.focus-card.focus-tumor .focus-icon { color: var(--c-fire-red); border-color: rgba(192,57,43,0.25); }
+.focus-card.focus-mosque .focus-icon { color: var(--c-green-700); }
+.focus-card.focus-elderly .focus-icon { color: var(--c-gold-600); border-color: rgba(168,132,47,0.3); }
+.focus-card.focus-orphans .focus-icon { color: var(--c-fire-orange); border-color: rgba(230,126,34,0.25); }
+
+.focus-card h3 {
+  font-family: var(--f-serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--c-green-800);
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+.focus-card p {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--c-ink-soft);
+  margin: 0;
+}
+
+/* Allocation bar */
+.focus-allocation {
+  margin-top: 56px;
+  padding: 32px 28px;
+  background: linear-gradient(135deg, #fff, var(--c-cream));
+  border: 1px solid var(--c-line);
+  border-radius: 22px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+.focus-allocation-head {
+  font-family: var(--f-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-gold-600);
+  margin-bottom: 18px;
+}
+.focus-allocation-bar {
+  display: flex;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 64px;
+  box-shadow: 0 6px 18px rgba(13,40,32,0.10);
+  border: 1px solid var(--c-line);
+}
+.alloc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: #fff;
+  font-family: var(--f-sans);
+}
+.alloc-tumor { background: linear-gradient(135deg, var(--c-fire-red), var(--c-fire-orange)); }
+.alloc-orphans { background: linear-gradient(135deg, var(--c-gold-600), var(--c-gold-400)); color: var(--c-green-900); }
+.alloc-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.95;
+}
+.alloc-pct {
+  font-family: var(--f-serif);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+.focus-allocation-note {
+  margin: 18px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--c-ink-soft);
+}
+.focus-allocation-note strong { color: var(--c-green-800); }
+
+@media (max-width: 1000px) {
+  .focus-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .section-focus { padding: 70px 0; }
+  .focus-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
+  .focus-card { padding: 22px 18px 20px; }
+  .focus-card h3 { font-size: 19px; }
+  .focus-allocation { padding: 24px 20px; margin-top: 40px; }
+  .focus-allocation-bar { height: 56px; }
+  .alloc-pct { font-size: 19px; }
+  .alloc-label { font-size: 10px; }
+}
 
 /* ============================================================
    DONATION CARD
@@ -1366,17 +1560,27 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   bottom: 12px;
   left: 12px;
   padding: 6px 14px;
-  background: rgba(13,40,32,0.8);
+  background: rgba(13,40,32,0.85);
   color: var(--c-gold-300);
-  font-size: 12px;
-  letter-spacing: 0.18em;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   border-radius: 999px;
   backdrop-filter: blur(8px);
+  max-width: calc(100% - 24px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+.gallery-tall { aspect-ratio: 3 / 4; grid-row: span 1; }
 
+@media (min-width: 801px) {
+  .gallery-tall { grid-row: span 2; aspect-ratio: 3 / 4; }
+}
 @media (max-width: 800px) {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-tall { aspect-ratio: 4 / 3; }
 }
 @media (max-width: 480px) {
   .gallery-grid { grid-template-columns: 1fr; }

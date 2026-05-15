@@ -3,9 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Revolution of Civilization — Membangun Peradaban, Menebar Kebaikan. Wadah pemuda berintegritas untuk berbagi, berkarya, dan peduli sesama." />
+  <meta name="description" content="Revolution of Civilization — Membangun Peradaban, Menebar Kebaikan. A youth movement caring for orphans, tumor patients, the elderly, and a mosque under renovation." />
   <meta name="theme-color" content="#1a3a2e" />
   <title>Revolution of Civilization — Membangun Peradaban, Menebar Kebaikan</title>
+  <script>
+    // Apply saved language as early as possible to avoid FOUC
+    (function () {
+      try {
+        var saved = localStorage.getItem('roc-lang');
+        if (saved === 'en' || saved === 'id') {
+          document.documentElement.setAttribute('lang', saved);
+        }
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet" />
@@ -39,21 +50,32 @@
 
       <nav class="primary-nav" id="primaryNav" aria-label="Primary">
         <ul>
-          <li><a href="#about">Tentang</a></li>
-          <li><a href="#vision">Visi</a></li>
-          <li><a href="#mission">Misi</a></li>
-          <li><a href="#function">Fungsi</a></li>
-          <li><a href="#donatur">Donatur</a></li>
-          <li><a href="#membership">Keanggotaan</a></li>
-          <li><a href="#gallery">Galeri</a></li>
-          <li><a href="#contact">Kontak</a></li>
-          <li class="nav-cta-mobile"><a href="#donasi" class="btn btn-primary js-donate">Donasi Sekarang</a></li>
+          <li><a href="#about"><span class="lang-id">Tentang</span><span class="lang-en">About</span></a></li>
+          <li><a href="#vision"><span class="lang-id">Visi</span><span class="lang-en">Vision</span></a></li>
+          <li><a href="#mission"><span class="lang-id">Misi</span><span class="lang-en">Mission</span></a></li>
+          <li><a href="#focus"><span class="lang-id">Pilar Kepedulian</span><span class="lang-en">Focus Areas</span></a></li>
+          <li><a href="#donatur"><span class="lang-id">Donatur</span><span class="lang-en">Donors</span></a></li>
+          <li><a href="#membership"><span class="lang-id">Keanggotaan</span><span class="lang-en">Membership</span></a></li>
+          <li><a href="#gallery"><span class="lang-id">Galeri</span><span class="lang-en">Gallery</span></a></li>
+          <li><a href="#contact"><span class="lang-id">Kontak</span><span class="lang-en">Contact</span></a></li>
+          <li class="nav-lang-mobile">
+            <div class="lang-switch" role="group" aria-label="Language">
+              <button type="button" class="lang-btn" data-lang-set="id">ID</button>
+              <button type="button" class="lang-btn" data-lang-set="en">EN</button>
+            </div>
+          </li>
+          <li class="nav-cta-mobile"><a href="#donasi" class="btn btn-primary js-donate"><span class="lang-id">Donasi Sekarang</span><span class="lang-en">Donate Now</span></a></li>
         </ul>
       </nav>
 
-      <a href="#donasi" class="btn btn-primary nav-cta js-donate">Donasi</a>
+      <div class="lang-switch nav-lang" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" data-lang-set="id">ID</button>
+        <button type="button" class="lang-btn" data-lang-set="en">EN</button>
+      </div>
 
-      <button class="nav-toggle" id="navToggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Buka menu">
+      <a href="#donasi" class="btn btn-primary nav-cta js-donate"><span class="lang-id">Donasi</span><span class="lang-en">Donate</span></a>
+
+      <button class="nav-toggle" id="navToggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Buka menu / Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -68,7 +90,8 @@
     <div class="container hero-inner">
       <p class="eyebrow">
         <span class="eyebrow-leaf">❦</span>
-        Membangun Peradaban, Menebar Kebaikan
+        <span class="lang-id">Membangun Peradaban, Menebar Kebaikan</span>
+        <span class="lang-en">Building Civilization, Spreading Kindness</span>
         <span class="eyebrow-leaf">❦</span>
       </p>
       <h1 class="hero-title">
@@ -76,29 +99,32 @@
         <span class="hero-title-accent">of Civilization</span>
       </h1>
       <p class="hero-sub">
-        Wadah pemuda‑pemudi berintegritas, berdedikasi tulus untuk
-        kepentingan masyarakat luas — berjiwa Pancasila &amp; Berakhlakul Karimah.
+        <span class="lang-id">Wadah pemuda‑pemudi berintegritas, berdedikasi tulus untuk
+        kepentingan masyarakat luas — berjiwa Pancasila &amp; Berakhlakul Karimah.</span>
+        <span class="lang-en">A platform for young people of integrity, sincerely dedicated to the
+        wider community — guided by Pancasila &amp; noble character.</span>
       </p>
       <div class="hero-cta">
         <a href="#donasi" class="btn btn-primary btn-lg js-donate">
-          <span>Donasi Sekarang</span>
+          <span class="lang-id">Donasi Sekarang</span>
+          <span class="lang-en">Donate Now</span>
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 21s-7-4.35-9.5-9.5C.5 7 4 3 7.5 3c2 0 3.5 1 4.5 2.5C13 4 14.5 3 16.5 3 20 3 23.5 7 21.5 11.5 19 16.65 12 21 12 21z" fill="currentColor"/></svg>
         </a>
-        <a href="#about" class="btn btn-ghost btn-lg">Pelajari Lebih Lanjut</a>
+        <a href="#about" class="btn btn-ghost btn-lg"><span class="lang-id">Pelajari Lebih Lanjut</span><span class="lang-en">Learn More</span></a>
       </div>
 
       <div class="hero-stats" aria-label="Pilar kegiatan">
         <div class="stat">
           <div class="stat-num">04</div>
-          <div class="stat-label">Pilar Donasi</div>
+          <div class="stat-label"><span class="lang-id">Pilar Kepedulian</span><span class="lang-en">Care Pillars</span></div>
         </div>
         <div class="stat">
           <div class="stat-num">03</div>
-          <div class="stat-label">Misi Utama</div>
+          <div class="stat-label"><span class="lang-id">Misi Utama</span><span class="lang-en">Core Missions</span></div>
         </div>
         <div class="stat">
           <div class="stat-num">∞</div>
-          <div class="stat-label">Ketulusan</div>
+          <div class="stat-label"><span class="lang-id">Ketulusan</span><span class="lang-en">Sincerity</span></div>
         </div>
       </div>
     </div>
@@ -112,12 +138,15 @@
   <section class="section section-about" id="about">
     <div class="container">
       <div class="section-head">
-        <span class="section-kicker">Tentang Kami</span>
-        <h2 class="section-title">Sebuah Gerakan, Bukan Sekadar Organisasi</h2>
+        <span class="section-kicker"><span class="lang-id">Tentang Kami</span><span class="lang-en">About Us</span></span>
+        <h2 class="section-title"><span class="lang-id">Sebuah Gerakan, Bukan Sekadar Organisasi</span><span class="lang-en">A Movement, Not Just an Organization</span></h2>
         <p class="section-lead">
-          Revolution of Civilization adalah wadah bagi pemuda‑pemudi Indonesia
+          <span class="lang-id">Revolution of Civilization adalah wadah bagi pemuda‑pemudi Indonesia
           yang ingin merevolusi peradaban melalui kebaikan, kepedulian, dan
-          karya nyata di tengah masyarakat.
+          karya nyata di tengah masyarakat.</span>
+          <span class="lang-en">Revolution of Civilization is a platform for Indonesian youth who want
+          to transform civilization through kindness, compassion, and tangible
+          action in the heart of the community.</span>
         </p>
       </div>
 
@@ -126,29 +155,29 @@
           <div class="about-card-icon">
             <svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 2l2.4 6.9H22l-6.2 4.5 2.4 7.1L12 16l-6.2 4.5 2.4-7.1L2 8.9h7.6z" fill="currentColor"/></svg>
           </div>
-          <h3>Integritas</h3>
-          <p>Pemuda yang jujur, konsisten, dan teguh dalam memegang nilai‑nilai luhur.</p>
+          <h3><span class="lang-id">Integritas</span><span class="lang-en">Integrity</span></h3>
+          <p><span class="lang-id">Pemuda yang jujur, konsisten, dan teguh dalam memegang nilai‑nilai luhur.</span><span class="lang-en">Young people who are honest, consistent, and steadfast in upholding noble values.</span></p>
         </article>
         <article class="about-card">
           <div class="about-card-icon">
             <svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 3a9 9 0 109 9 9 9 0 00-9-9zm0 4a5 5 0 11-5 5 5 5 0 015-5zm0 2a3 3 0 103 3 3 3 0 00-3-3z" fill="currentColor"/></svg>
           </div>
-          <h3>Intelektualitas</h3>
-          <p>Kritis dalam berpikir, progresif dalam bertindak, kreatif dalam berkarya.</p>
+          <h3><span class="lang-id">Intelektualitas</span><span class="lang-en">Intellect</span></h3>
+          <p><span class="lang-id">Kritis dalam berpikir, progresif dalam bertindak, kreatif dalam berkarya.</span><span class="lang-en">Critical in thinking, progressive in action, creative in work.</span></p>
         </article>
         <article class="about-card">
           <div class="about-card-icon">
             <svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 21s-7-4.35-9.5-9.5C.5 7 4 3 7.5 3c2 0 3.5 1 4.5 2.5C13 4 14.5 3 16.5 3 20 3 23.5 7 21.5 11.5 19 16.65 12 21 12 21z" fill="currentColor"/></svg>
           </div>
-          <h3>Kepedulian</h3>
-          <p>Tulus mendedikasikan diri untuk masyarakat luas tanpa membeda‑bedakan.</p>
+          <h3><span class="lang-id">Kepedulian</span><span class="lang-en">Compassion</span></h3>
+          <p><span class="lang-id">Tulus mendedikasikan diri untuk masyarakat luas tanpa membeda‑bedakan.</span><span class="lang-en">Sincerely devoted to the wider community without discrimination.</span></p>
         </article>
         <article class="about-card">
           <div class="about-card-icon">
             <svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7L2 14l10 5 10-5L12 9zm0 7L2 21l10 5 10-5-10-5z" fill="currentColor"/></svg>
           </div>
-          <h3>Kepemimpinan</h3>
-          <p>Menumbuhkan jiwa leadership dalam mengatasi konflik dan tantangan sosial.</p>
+          <h3><span class="lang-id">Kepemimpinan</span><span class="lang-en">Leadership</span></h3>
+          <p><span class="lang-id">Menumbuhkan jiwa leadership dalam mengatasi konflik dan tantangan sosial.</span><span class="lang-en">Cultivating leadership to navigate conflict and social challenges.</span></p>
         </article>
       </div>
     </div>
@@ -158,13 +187,16 @@
   <section class="section section-vision" id="vision">
     <div class="container vision-grid">
       <div class="vision-text">
-        <span class="section-kicker light">Visi</span>
-        <h2 class="section-title light">Pemuda Berintegritas, Panutan Bagi Sesama</h2>
+        <span class="section-kicker light"><span class="lang-id">Visi</span><span class="lang-en">Vision</span></span>
+        <h2 class="section-title light"><span class="lang-id">Pemuda Berintegritas, Panutan Bagi Sesama</span><span class="lang-en">Youth of Integrity, Role Models for Others</span></h2>
         <blockquote class="vision-quote">
           <span class="quote-mark">“</span>
-          Menjadikan pemuda yang memiliki <em>integritas</em> dan <em>intelektualitas</em>
+          <span class="lang-id">Menjadikan pemuda yang memiliki <em>integritas</em> dan <em>intelektualitas</em>
           yang berkualitas, yang bisa mengedepankan kepentingan bersama, serta
-          dapat menjadi <em>panutan</em> bagi pemuda lainnya.
+          dapat menjadi <em>panutan</em> bagi pemuda lainnya.</span>
+          <span class="lang-en">To shape young people of true <em>integrity</em> and <em>intellect</em>
+          who put the common good first and become a <em>role model</em>
+          for other youth.</span>
           <span class="quote-mark right">”</span>
         </blockquote>
       </div>
@@ -196,10 +228,11 @@
   <section class="section section-mission" id="mission">
     <div class="container">
       <div class="section-head">
-        <span class="section-kicker">Misi</span>
-        <h2 class="section-title">Tiga Langkah Membangun Peradaban</h2>
+        <span class="section-kicker"><span class="lang-id">Misi</span><span class="lang-en">Mission</span></span>
+        <h2 class="section-title"><span class="lang-id">Tiga Langkah Membangun Peradaban</span><span class="lang-en">Three Steps to Build Civilization</span></h2>
         <p class="section-lead">
-          Tiga misi inti yang menuntun setiap langkah pengabdian dan pergerakan kami.
+          <span class="lang-id">Tiga misi inti yang menuntun setiap langkah pengabdian dan pergerakan kami.</span>
+          <span class="lang-en">Three core missions that guide every step of our service and movement.</span>
         </p>
       </div>
 
@@ -207,33 +240,41 @@
         <li class="mission-item">
           <div class="mission-number">01</div>
           <div class="mission-body">
-            <h3>Mengintegrasikan Tujuan Bersama</h3>
+            <h3><span class="lang-id">Mengintegrasikan Tujuan Bersama</span><span class="lang-en">Integrate Our Shared Purpose</span></h3>
             <p>
-              Mengintegrasikan tujuan bersama yang berdasarkan nilai adat istiadat
+              <span class="lang-id">Mengintegrasikan tujuan bersama yang berdasarkan nilai adat istiadat
               serta mampu menciptakan pemuda‑pemudi yang siap berkompetisi di
-              tengah perkembangan zaman.
+              tengah perkembangan zaman.</span>
+              <span class="lang-en">Aligning a shared purpose rooted in tradition and customs, while
+              shaping young people ready to thrive in a changing world.</span>
             </p>
           </div>
         </li>
         <li class="mission-item">
           <div class="mission-number">02</div>
           <div class="mission-body">
-            <h3>Meningkatkan Profesionalitas &amp; Kapabilitas</h3>
+            <h3><span class="lang-id">Meningkatkan Profesionalitas &amp; Kapabilitas</span><span class="lang-en">Grow Professionalism &amp; Capability</span></h3>
             <p>
-              Meningkatkan profesionalitas, kapabilitas, serta sumber daya manusia
+              <span class="lang-id">Meningkatkan profesionalitas, kapabilitas, serta sumber daya manusia
               yang dapat beradaptasi dalam segala bidang, dan menumbuhkan jiwa
-              <em>leadership</em> dalam mengatasi konflik sosial.
+              <em>leadership</em> dalam mengatasi konflik sosial.</span>
+              <span class="lang-en">Building professionalism, capability, and adaptable people across
+              every field — nurturing the <em>leadership</em> needed to resolve
+              social conflict.</span>
             </p>
           </div>
         </li>
         <li class="mission-item">
           <div class="mission-number">03</div>
           <div class="mission-body">
-            <h3>Pemuda Bertaqwa &amp; Berkarya</h3>
+            <h3><span class="lang-id">Pemuda Bertaqwa &amp; Berkarya</span><span class="lang-en">Faithful Youth Who Create</span></h3>
             <p>
-              Terwujudnya pemuda‑pemudi yang bertaqwa kepada Allah SWT, penuh
+              <span class="lang-id">Terwujudnya pemuda‑pemudi yang bertaqwa kepada Allah SWT, penuh
               perhatian dan peka dalam setiap permasalahan dengan spirit dan
-              mentalitas yang kuat, kreatif dan inovatif dalam berkarya.
+              mentalitas yang kuat, kreatif dan inovatif dalam berkarya.</span>
+              <span class="lang-en">Raising youth who are devout, attentive, and sensitive to every
+              issue — with strong spirit, creativity, and innovation in all
+              they create.</span>
             </p>
           </div>
         </li>
@@ -244,13 +285,113 @@
   <!-- ============== FUNCTION ============== -->
   <section class="section section-function" id="function">
     <div class="container function-wrap">
-      <div class="function-tag">Fungsi</div>
+      <div class="function-tag"><span class="lang-id">Fungsi</span><span class="lang-en">Purpose</span></div>
       <p class="function-text">
-        Sebagai <strong>wadah berhimpun</strong> para pemuda‑pemudi untuk
+        <span class="lang-id">Sebagai <strong>wadah berhimpun</strong> para pemuda‑pemudi untuk
         mengembangkan sikap‑sikap kepemudaan yang <em>kritis</em> dalam berpikir
         dan <em>progresif</em> dalam bertindak, sekaligus menghindarkan diri
-        dari sikap dan perilaku yang menyimpang <span class="muted">(Epigonistik)</span>.
+        dari sikap dan perilaku yang menyimpang <span class="muted">(Epigonistik)</span>.</span>
+        <span class="lang-en">A <strong>gathering place</strong> for young people to develop a youth
+        spirit that is <em>critical</em> in thinking and <em>progressive</em>
+        in action — while resisting hollow imitation and unprincipled behavior
+        <span class="muted">(Epigonism)</span>.</span>
       </p>
+    </div>
+  </section>
+
+  <!-- ============== FOCUS AREAS ============== -->
+  <section class="section section-focus" id="focus">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker"><span class="lang-id">Pilar Kepedulian</span><span class="lang-en">Focus Areas</span></span>
+        <h2 class="section-title"><span class="lang-id">Empat Wajah Kepedulian Kami</span><span class="lang-en">Four Faces of Our Care</span></h2>
+        <p class="section-lead">
+          <span class="lang-id">Komunitas kami tidak hanya berbagi dengan anak yatim. Kami juga menggalang
+          dana untuk masjid yang sedang direnovasi, membantu lansia yang tak
+          memiliki apa‑apa, serta menemani saudara‑saudari yang berjuang
+          melawan tumor.</span>
+          <span class="lang-en">Our community doesn't only share with orphans. We also raise funds
+          for a mosque under renovation, support elderly people who have
+          nothing, and stand beside brothers and sisters battling tumors.</span>
+        </p>
+      </div>
+
+      <div class="focus-grid">
+        <article class="focus-card focus-orphans">
+          <div class="focus-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zm-7 9a7 7 0 0114 0H5zm14.5-9.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM4.5 11.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" fill="currentColor"/></svg>
+          </div>
+          <h3><span class="lang-id">Anak Yatim</span><span class="lang-en">Orphaned Children</span></h3>
+          <p>
+            <span class="lang-id">Santunan, kebutuhan harian, pendidikan, dan kasih sayang untuk
+            anak yatim‑piatu di lingkungan kami.</span>
+            <span class="lang-en">Care packages, daily needs, schooling, and warmth for orphans
+            in our community.</span>
+          </p>
+        </article>
+
+        <article class="focus-card focus-tumor">
+          <div class="focus-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="32" height="32"><path d="M20 8h-3V5a1 1 0 00-1-1H8a1 1 0 00-1 1v3H4a1 1 0 00-1 1v6a1 1 0 001 1h3v3a1 1 0 001 1h8a1 1 0 001-1v-3h3a1 1 0 001-1V9a1 1 0 00-1-1zm-7 3v2h-2v-2H9v-2h2V7h2v2h2v2h-2z" fill="currentColor"/></svg>
+          </div>
+          <h3><span class="lang-id">Pasien Tumor</span><span class="lang-en">Tumor Patients</span></h3>
+          <p>
+            <span class="lang-id">Bantuan biaya pengobatan dan dukungan untuk mereka yang sedang
+            berjuang melawan tumor.</span>
+            <span class="lang-en">Treatment cost assistance and support for those fighting
+            tumors.</span>
+          </p>
+        </article>
+
+        <article class="focus-card focus-mosque">
+          <div class="focus-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 2c1.5 2 3 3.5 3 5.5 0 1.5-1 2.5-3 4-2-1.5-3-2.5-3-4 0-2 1.5-3.5 3-5.5zm-8 10h16v9H4v-9zm2 0V9h2v3H6zm10 0V9h2v3h-2zm-4-1c1.66 0 3 1.34 3 3v7h-6v-7c0-1.66 1.34-3 3-3z" fill="currentColor"/></svg>
+          </div>
+          <h3><span class="lang-id">Renovasi Masjid</span><span class="lang-en">Mosque Renovation</span></h3>
+          <p>
+            <span class="lang-id">Penggalangan dana untuk masjid yang sedang direnovasi dan masih
+            kekurangan dana penyelesaian.</span>
+            <span class="lang-en">Fundraising for a mosque under renovation that is still short
+            of the funds needed to finish.</span>
+          </p>
+        </article>
+
+        <article class="focus-card focus-elderly">
+          <div class="focus-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12 4a3 3 0 11-3 3 3 3 0 013-3zm-1 7h2c1.66 0 3 1.34 3 3v3h-2v6h-4v-6H8v-3c0-1.66 1.34-3 3-3zm-4 2a2 2 0 11-2 2 2 2 0 012-2z" fill="currentColor"/></svg>
+          </div>
+          <h3><span class="lang-id">Lansia</span><span class="lang-en">The Elderly</span></h3>
+          <p>
+            <span class="lang-id">Mengunjungi dan membantu lansia yang sendirian dan tidak memiliki
+            siapapun untuk merawat mereka.</span>
+            <span class="lang-en">Visiting and supporting elderly people who are alone with no one
+            to care for them.</span>
+          </p>
+        </article>
+      </div>
+
+      <div class="focus-allocation">
+        <div class="focus-allocation-head">
+          <span class="lang-id">Alokasi Donasi Putaran Ini</span>
+          <span class="lang-en">Allocation This Round</span>
+        </div>
+        <div class="focus-allocation-bar" aria-hidden="true">
+          <div class="alloc alloc-tumor">
+            <span class="alloc-label"><span class="lang-id">Pasien Tumor</span><span class="lang-en">Tumor Patients</span></span>
+            <span class="alloc-pct">50%</span>
+          </div>
+          <div class="alloc alloc-orphans">
+            <span class="alloc-label"><span class="lang-id">Anak Yatim</span><span class="lang-en">Orphans</span></span>
+            <span class="alloc-pct">50%</span>
+          </div>
+        </div>
+        <p class="focus-allocation-note">
+          <span class="lang-id">Donasi yang Anda berikan kali ini akan dibagi dua: <strong>50%</strong>
+          untuk membantu pasien tumor dan <strong>50%</strong> untuk anak yatim.</span>
+          <span class="lang-en">Your donations this round will be split equally: <strong>50%</strong>
+          for tumor patients and <strong>50%</strong> for orphaned children.</span>
+        </p>
+      </div>
     </div>
   </section>
 
@@ -265,90 +406,88 @@
         <div class="ornament-corner bottom-right" aria-hidden="true"></div>
 
         <p class="donation-eyebrow">
-          <span>❦</span> Membangun Peradaban, Menebar Kebaikan <span>❦</span>
+          <span>❦</span>
+          <span class="lang-id">Membangun Peradaban, Menebar Kebaikan</span>
+          <span class="lang-en">Building Civilization, Spreading Kindness</span>
+          <span>❦</span>
         </p>
-        <h2 class="donation-title">OPEN DONASI</h2>
-        <div class="donation-banner">SANTUNAN ANAK YATIM‑PIATU</div>
-        <p class="donation-banner-en">Support for Orphans</p>
+        <h2 class="donation-title"><span class="lang-id">OPEN DONASI</span><span class="lang-en">OPEN DONATION</span></h2>
+        <div class="donation-banner">
+          <span class="lang-id">PASIEN TUMOR &amp; ANAK YATIM</span>
+          <span class="lang-en">TUMOR PATIENTS &amp; ORPHANS</span>
+        </div>
+        <p class="donation-banner-en">
+          <span class="lang-id">Donasi dibagi rata 50/50</span>
+          <span class="lang-en">Donations split 50/50</span>
+        </p>
 
         <p class="donation-intro">
-          Mari bersama hadir dan berbagi kebahagiaan<br/>
-          untuk mereka yang membutuhkan.
-          <span class="en-sub">
-            Let us come together and share happiness<br/>
-            with those who are in need.
-          </span>
+          <span class="lang-id">Mari bersama hadir dan berbagi kebahagiaan<br/>untuk mereka yang membutuhkan.</span>
+          <span class="lang-en">Let us come together and share happiness<br/>with those who are in need.</span>
         </p>
 
         <blockquote class="hadith">
           <span class="hadith-mark">“</span>
-          Aku dan orang yang menanggung anak yatim (kedudukannya) di surga seperti ini.
+          <span class="lang-id">Aku dan orang yang menanggung anak yatim (kedudukannya) di surga seperti ini.</span>
+          <span class="lang-en">I and the person who takes care of an orphan will be in Paradise like this.</span>
           <span class="hadith-mark">”</span>
-          <span class="en-sub">
-            “I and the person who takes care of an orphan will be in Paradise like this.”
-          </span>
-          <cite>— HR. Bukhari · Hadith narrated by Bukhari</cite>
+          <cite><span class="lang-id">— HR. Bukhari</span><span class="lang-en">— Hadith narrated by Bukhari</span></cite>
         </blockquote>
 
         <p class="donation-sub">
-          Setiap kebaikan yang Anda berikan sangat berarti untuk masa depan mereka.
-          <span class="en-sub">
-            Every kindness you give means a lot for their future.
-          </span>
+          <span class="lang-id">Setiap kebaikan yang Anda berikan sangat berarti untuk masa depan mereka.</span>
+          <span class="lang-en">Every kindness you give means a lot for their future.</span>
         </p>
 
         <div class="donation-pillars-title">
-          DONASI ANDA AKAN DISALURKAN UNTUK
-          <span class="en-sub-inline">Your donations will be used for</span>
+          <span class="lang-id">DONASI ANDA AKAN DISALURKAN UNTUK</span>
+          <span class="lang-en">YOUR DONATIONS WILL BE USED FOR</span>
         </div>
         <div class="donation-pillars">
           <div class="pillar">
             <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28"><path d="M20 8h-3V5a1 1 0 00-1-1H8a1 1 0 00-1 1v3H4a1 1 0 00-1 1v6a1 1 0 001 1h3v3a1 1 0 001 1h8a1 1 0 001-1v-3h3a1 1 0 001-1V9a1 1 0 00-1-1zm-7 3v2h-2v-2H9v-2h2V7h2v2h2v2h-2z" fill="currentColor"/></svg>
+            </div>
+            <div class="pillar-name"><span class="lang-id">Bantuan Pengobatan<br/>Pasien Tumor</span><span class="lang-en">Tumor Patient<br/>Medical Aid</span></div>
+            <div class="pillar-en"><span class="lang-id">50% dari donasi</span><span class="lang-en">50% of donations</span></div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
               <svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 21s-7-4.35-9.5-9.5C.5 7 4 3 7.5 3c2 0 3.5 1 4.5 2.5C13 4 14.5 3 16.5 3 20 3 23.5 7 21.5 11.5 19 16.65 12 21 12 21z" fill="currentColor"/></svg>
             </div>
-            <div class="pillar-name">Santunan<br/>Yatim‑Piatu</div>
-            <div class="pillar-en">Support for orphans</div>
+            <div class="pillar-name"><span class="lang-id">Santunan<br/>Anak Yatim</span><span class="lang-en">Support for<br/>Orphans</span></div>
+            <div class="pillar-en"><span class="lang-id">50% dari donasi</span><span class="lang-en">50% of donations</span></div>
           </div>
           <div class="pillar">
             <div class="pillar-icon">
               <svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 5l9 3 9-3v13l-9 3-9-3V5zm9 5L4 7v10l8 2 8-2V7l-8 3z" fill="currentColor"/></svg>
             </div>
-            <div class="pillar-name">Kebutuhan<br/>Pendidikan</div>
-            <div class="pillar-en">Educational needs</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">
-              <svg viewBox="0 0 24 24" width="28" height="28"><path d="M5 7h14l-1 13H6L5 7zm3-4h8l1 2H7l1-2z" fill="currentColor"/></svg>
-            </div>
-            <div class="pillar-name">Kebutuhan<br/>Harian</div>
-            <div class="pillar-en">Daily necessities</div>
+            <div class="pillar-name"><span class="lang-id">Pendidikan<br/>&amp; Harian</span><span class="lang-en">Schooling<br/>&amp; Daily Needs</span></div>
+            <div class="pillar-en"><span class="lang-id">untuk anak yatim</span><span class="lang-en">for the orphans</span></div>
           </div>
           <div class="pillar">
             <div class="pillar-icon">
               <svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 4c2 0 4 2 4 4s-2 4-4 4-4-2-4-4 2-4 4-4zM4 20c0-4 4-7 8-7s8 3 8 7H4z" fill="currentColor"/></svg>
             </div>
-            <div class="pillar-name">Bentuk Kepedulian<br/>&amp; Kasih Sayang</div>
-            <div class="pillar-en">Compassion &amp; care</div>
+            <div class="pillar-name"><span class="lang-id">Kasih Sayang<br/>&amp; Pendampingan</span><span class="lang-en">Care &amp;<br/>Companionship</span></div>
+            <div class="pillar-en"><span class="lang-id">untuk keduanya</span><span class="lang-en">for both</span></div>
           </div>
         </div>
 
         <div class="donation-footer">
           <p class="donation-quote">
-            Berbagi bukan tentang seberapa banyak,<br/>
-            tapi tentang seberapa tulus.
-            <span class="en-sub">
-              Sharing is not about how much you give,<br/>but about sincerity.
-            </span>
+            <span class="lang-id">Berbagi bukan tentang seberapa banyak,<br/>tapi tentang seberapa tulus.</span>
+            <span class="lang-en">Sharing is not about how much you give,<br/>but about how sincerely you give it.</span>
           </p>
           <p class="donation-thanks">
-            TERIMA KASIH ATAS KEBAIKAN ANDA
-            <span class="donation-thanks-en">Thank you for your kindness</span>
+            <span class="lang-id">TERIMA KASIH ATAS KEBAIKAN ANDA</span>
+            <span class="lang-en">THANK YOU FOR YOUR KINDNESS</span>
           </p>
         </div>
 
         <div class="donation-cta">
-          <a href="#donasi" class="btn btn-primary btn-lg js-donate">Salurkan Donasi</a>
-          <a href="#contact" class="btn btn-outline-light btn-lg">Hubungi Kami</a>
+          <a href="#donasi" class="btn btn-primary btn-lg js-donate"><span class="lang-id">Salurkan Donasi</span><span class="lang-en">Donate Now</span></a>
+          <a href="#contact" class="btn btn-outline-light btn-lg"><span class="lang-id">Hubungi Kami</span><span class="lang-en">Contact Us</span></a>
         </div>
       </div>
     </div>
@@ -358,26 +497,26 @@
   <section class="section section-donators" id="donatur">
     <div class="container">
       <div class="section-head">
-        <span class="section-kicker">Donatur · Donors</span>
-        <h2 class="section-title">Mereka yang Telah Berbagi</h2>
+        <span class="section-kicker"><span class="lang-id">Donatur</span><span class="lang-en">Donors</span></span>
+        <h2 class="section-title"><span class="lang-id">Mereka yang Telah Berbagi</span><span class="lang-en">Those Who Have Shared</span></h2>
         <p class="section-lead">
-          Terima kasih kepada para donatur yang dengan tulus berbagi kebaikan.
-          <span class="en-sub">Thank you to the donors who have sincerely shared kindness.</span>
+          <span class="lang-id">Terima kasih kepada para donatur yang dengan tulus berbagi kebaikan.</span>
+          <span class="lang-en">Thank you to the donors who have sincerely shared kindness.</span>
         </p>
       </div>
 
       <div class="donors-stats">
         <div class="d-stat">
           <div class="d-stat-num">$153</div>
-          <div class="d-stat-label">Terkumpul <span>· Raised</span></div>
+          <div class="d-stat-label"><span class="lang-id">Terkumpul</span><span class="lang-en">Raised</span></div>
         </div>
         <div class="d-stat">
           <div class="d-stat-num">20</div>
-          <div class="d-stat-label">Donatur <span>· Donors</span></div>
+          <div class="d-stat-label"><span class="lang-id">Donatur</span><span class="lang-en">Donors</span></div>
         </div>
         <div class="d-stat">
           <div class="d-stat-num">29</div>
-          <div class="d-stat-label">Transaksi <span>· Transactions</span></div>
+          <div class="d-stat-label"><span class="lang-id">Transaksi</span><span class="lang-en">Transactions</span></div>
         </div>
       </div>
 
@@ -558,7 +697,7 @@
       </ul>
 
       <div class="donors-cta">
-        <a href="#donasi" class="btn btn-primary js-donate">Bergabung Berdonasi · Join the Donors</a>
+        <a href="#donasi" class="btn btn-primary js-donate"><span class="lang-id">Bergabung Berdonasi</span><span class="lang-en">Join the Donors</span></a>
       </div>
     </div>
   </section>
@@ -567,21 +706,25 @@
   <section class="section section-membership" id="membership">
     <div class="container membership-grid">
       <div class="membership-text">
-        <span class="section-kicker">Keanggotaan</span>
-        <h2 class="section-title">Mereka yang Tulus Mendedikasikan Diri</h2>
+        <span class="section-kicker"><span class="lang-id">Keanggotaan</span><span class="lang-en">Membership</span></span>
+        <h2 class="section-title"><span class="lang-id">Mereka yang Tulus Mendedikasikan Diri</span><span class="lang-en">Those Who Sincerely Dedicate Themselves</span></h2>
         <p class="membership-lead">
-          Keanggotaan <strong>Revolution of Civilization</strong> adalah mereka yang
+          <span class="lang-id">Keanggotaan <strong>Revolution of Civilization</strong> adalah mereka yang
           dengan ikhlas mendedikasikan diri untuk kepentingan masyarakat luas
           tanpa membeda‑bedakan, serta berjiwa <em>Pancasila</em> dan
-          <em>Berakhlakul Karimah</em>.
+          <em>Berakhlakul Karimah</em>.</span>
+          <span class="lang-en">Members of <strong>Revolution of Civilization</strong> are those who
+          sincerely devote themselves to the wider community without
+          discrimination, guided by <em>Pancasila</em> and
+          <em>noble character</em>.</span>
         </p>
         <ul class="membership-list">
-          <li><span class="check">✓</span> Berjiwa Pancasila &amp; Berakhlakul Karimah</li>
-          <li><span class="check">✓</span> Mendedikasikan diri secara ikhlas untuk masyarakat</li>
-          <li><span class="check">✓</span> Tidak membeda‑bedakan suku, ras, dan golongan</li>
-          <li><span class="check">✓</span> Kritis dalam berpikir, progresif dalam bertindak</li>
+          <li><span class="check">✓</span> <span class="lang-id">Berjiwa Pancasila &amp; Berakhlakul Karimah</span><span class="lang-en">Guided by Pancasila &amp; noble character</span></li>
+          <li><span class="check">✓</span> <span class="lang-id">Mendedikasikan diri secara ikhlas untuk masyarakat</span><span class="lang-en">Sincerely devoted to serving the community</span></li>
+          <li><span class="check">✓</span> <span class="lang-id">Tidak membeda‑bedakan suku, ras, dan golongan</span><span class="lang-en">No distinction of ethnicity, race, or group</span></li>
+          <li><span class="check">✓</span> <span class="lang-id">Kritis dalam berpikir, progresif dalam bertindak</span><span class="lang-en">Critical in thinking, progressive in action</span></li>
         </ul>
-        <a href="#contact" class="btn btn-primary">Bergabung Sekarang</a>
+        <a href="#contact" class="btn btn-primary"><span class="lang-id">Bergabung Sekarang</span><span class="lang-en">Join Now</span></a>
       </div>
 
       <aside class="membership-card">
@@ -602,37 +745,61 @@
   <section class="section section-gallery" id="gallery">
     <div class="container">
       <div class="section-head">
-        <span class="section-kicker">Galeri</span>
-        <h2 class="section-title">Visualisasi Gerakan</h2>
+        <span class="section-kicker"><span class="lang-id">Galeri</span><span class="lang-en">Gallery</span></span>
+        <h2 class="section-title"><span class="lang-id">Jejak Langkah Kami</span><span class="lang-en">Our Footsteps</span></h2>
         <p class="section-lead">
-          Visi, Misi, dan Fungsi yang menjadi panduan kami dalam berkarya.
+          <span class="lang-id">Momen‑momen nyata dari kegiatan komunitas — santunan anak yatim,
+          renovasi masjid, kunjungan lansia, dan gotong royong bersama warga.</span>
+          <span class="lang-en">Real moments from our community work — caring for orphans,
+          renovating a mosque, visiting the elderly, and helping our
+          neighbors together.</span>
         </p>
       </div>
 
       <div class="gallery-grid">
-        <figure class="gallery-item">
-          <img src="images/685965898_1458817755457753_1681486024995340370_n.jpg" alt="Visi Revolution of Civilization" loading="lazy" />
-          <figcaption>Visi</figcaption>
+        <figure class="gallery-item gallery-tall">
+          <img src="images/act-orphans-group-1.jpg" alt="Group photo with orphaned children holding donation bags" loading="lazy" />
+          <figcaption><span class="lang-id">Santunan Anak Yatim</span><span class="lang-en">Caring for Orphans</span></figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="images/699558820_968422132446195_7123600293148375480_n.jpg" alt="Misi 1 - Mengintegrasikan tujuan bersama" loading="lazy" />
-          <figcaption>Misi 1</figcaption>
+          <img src="images/act-mosque-handover.jpg" alt="Handing over a donation to the imam at a mosque under renovation" loading="lazy" />
+          <figcaption><span class="lang-id">Donasi Renovasi Masjid</span><span class="lang-en">Mosque Renovation Donation</span></figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="images/692146477_874673475647183_6281649217931002774_n.jpg" alt="Misi 2 - Meningkatkan profesionalitas dan kapabilitas" loading="lazy" />
-          <figcaption>Misi 2</figcaption>
+          <img src="images/act-elderly-visit.jpg" alt="Visiting an elderly man at his home with a bag of supplies" loading="lazy" />
+          <figcaption><span class="lang-id">Kunjungan Lansia</span><span class="lang-en">Visiting the Elderly</span></figcaption>
+        </figure>
+        <figure class="gallery-item gallery-tall">
+          <img src="images/act-gotong-royong.jpg" alt="Community members rebuilding a roof together" loading="lazy" />
+          <figcaption><span class="lang-id">Gotong Royong</span><span class="lang-en">Working Together</span></figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="images/689135641_1537842784567819_2989130739919262705_n.jpg" alt="Misi 3 - Pemuda yang bertaqwa dan berkarya" loading="lazy" />
-          <figcaption>Misi 3</figcaption>
+          <img src="images/act-mosque-cement.jpg" alt="Cement bags donated for the pesantren construction" loading="lazy" />
+          <figcaption><span class="lang-id">Material Bangunan Ponpes</span><span class="lang-en">Building Materials for Pesantren</span></figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="images/687013977_3997709407204808_8886868172955350409_n.jpg" alt="Fungsi - Wadah berhimpun pemuda" loading="lazy" />
-          <figcaption>Fungsi</figcaption>
+          <img src="images/act-street-aid.jpg" alt="Members distributing food parcels on the street" loading="lazy" />
+          <figcaption><span class="lang-id">Berbagi di Jalan</span><span class="lang-en">Street Outreach</span></figcaption>
         </figure>
         <figure class="gallery-item">
-          <img src="images/688573516_960452346696102_7687602261042468864_n.jpg" alt="Keanggotaan Revolution of Civilization" loading="lazy" />
-          <figcaption>Keanggotaan</figcaption>
+          <img src="images/act-orphans-group-2.jpg" alt="Group photo at an Indonesian Independence celebration with orphans" loading="lazy" />
+          <figcaption><span class="lang-id">Bersama Anak Yatim</span><span class="lang-en">With the Orphans</span></figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="images/act-musyawarah.jpg" alt="Community members in a planning meeting on the floor" loading="lazy" />
+          <figcaption><span class="lang-id">Musyawarah Komunitas</span><span class="lang-en">Community Gathering</span></figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="images/act-market-supplies.jpg" alt="Members shopping at a traditional market for supplies" loading="lazy" />
+          <figcaption><span class="lang-id">Belanja Logistik</span><span class="lang-en">Sourcing Supplies</span></figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="images/act-orphan-event-night.jpg" alt="Member in ROC jacket at an evening community event" loading="lazy" />
+          <figcaption><span class="lang-id">Malam Acara Komunitas</span><span class="lang-en">Community Evening Event</span></figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="images/act-community-evening.jpg" alt="Members in ROC jackets at an evening street outreach" loading="lazy" />
+          <figcaption><span class="lang-id">Jaket ROC di Lapangan</span><span class="lang-en">ROC on the Ground</span></figcaption>
         </figure>
       </div>
     </div>
@@ -642,10 +809,11 @@
   <section class="section section-contact" id="contact">
     <div class="container">
       <div class="section-head">
-        <span class="section-kicker light">Kontak</span>
-        <h2 class="section-title light">Mari Bergerak Bersama</h2>
+        <span class="section-kicker light"><span class="lang-id">Kontak</span><span class="lang-en">Contact</span></span>
+        <h2 class="section-title light"><span class="lang-id">Mari Bergerak Bersama</span><span class="lang-en">Let's Move Forward Together</span></h2>
         <p class="section-lead light">
-          Untuk donasi, kerja sama, atau bergabung sebagai anggota, hubungi kami melalui kanal di bawah ini.
+          <span class="lang-id">Untuk donasi, kerja sama, atau bergabung sebagai anggota, hubungi kami melalui kanal di bawah ini.</span>
+          <span class="lang-en">For donations, partnerships, or to join as a member, reach us through any of the channels below.</span>
         </p>
       </div>
 
@@ -682,7 +850,7 @@
             <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2L2 12l10 10 10-10L12 2zm0 4l6 6-6 6-6-6 6-6z" fill="currentColor"/></svg>
           </div>
           <div class="contact-content">
-            <h3>Sekretariat</h3>
+            <h3><span class="lang-id">Sekretariat</span><span class="lang-en">Headquarters</span></h3>
             <p>Indonesia</p>
           </div>
         </a>
@@ -709,10 +877,10 @@
         </span>
         <div>
           <div class="footer-name">Revolution of Civilization</div>
-          <div class="footer-tag">Membangun Peradaban, Menebar Kebaikan</div>
+          <div class="footer-tag"><span class="lang-id">Membangun Peradaban, Menebar Kebaikan</span><span class="lang-en">Building Civilization, Spreading Kindness</span></div>
         </div>
       </div>
-      <p class="footer-copy">© <span id="year"></span> Revolution of Civilization. Seluruh hak cipta dilindungi.</p>
+      <p class="footer-copy">© <span id="year"></span> Revolution of Civilization. <span class="lang-id">Seluruh hak cipta dilindungi.</span><span class="lang-en">All rights reserved.</span></p>
     </div>
   </footer>
 
@@ -720,19 +888,23 @@
   <div class="donate-modal" id="donateModal" role="dialog" aria-modal="true" aria-labelledby="donateModalTitle" aria-hidden="true">
     <div class="donate-modal-backdrop" data-close></div>
     <div class="donate-modal-dialog" role="document">
-      <button type="button" class="donate-modal-close" data-close aria-label="Tutup">
+      <button type="button" class="donate-modal-close" data-close aria-label="Close / Tutup">
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M18.3 5.71L12 12.01l-6.3-6.3-1.4 1.41 6.29 6.3-6.29 6.3 1.4 1.4L12 14.84l6.3 6.3 1.4-1.41-6.29-6.3 6.29-6.3z" fill="currentColor"/></svg>
       </button>
 
       <p class="donate-modal-eyebrow">
-        <span>❦</span> Open Donasi <span>❦</span>
+        <span>❦</span>
+        <span class="lang-id">Open Donasi</span>
+        <span class="lang-en">Open Donation</span>
+        <span>❦</span>
       </p>
-      <h3 class="donate-modal-title" id="donateModalTitle">Pilih Metode Donasi</h3>
+      <h3 class="donate-modal-title" id="donateModalTitle"><span class="lang-id">Pilih Metode Donasi</span><span class="lang-en">Choose a Donation Method</span></h3>
       <p class="donate-modal-sub">
-        Setiap kebaikan yang Anda berikan sangat berarti.
+        <span class="lang-id">Setiap kebaikan yang Anda berikan sangat berarti.</span>
+        <span class="lang-en">Every kindness you give matters greatly.</span>
       </p>
 
-      <div class="donate-tabs" role="tablist" aria-label="Metode donasi">
+      <div class="donate-tabs" role="tablist" aria-label="Donation method">
         <button type="button" class="donate-tab is-active" role="tab" aria-selected="true" aria-controls="tab-paypal" id="tabBtn-paypal" data-tab="paypal">
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7.4 21H4.5l2.7-15.6h6.4c3 0 4.7 1.4 4.3 4-.4 2.7-2.5 4.4-5.5 4.4H9.6L8.7 21H7.4zm2.5-9h2.2c1.6 0 2.6-.8 2.8-2.2.2-1.3-.6-2-2-2H10.7L9.9 12z" fill="currentColor"/></svg>
           PayPal
@@ -749,27 +921,27 @@
 
       <!-- PAYPAL -->
       <div class="donate-tab-panel is-active" role="tabpanel" id="tab-paypal" aria-labelledby="tabBtn-paypal">
-        <p class="donate-panel-hint">Anda akan diarahkan ke PayPal di tab baru.</p>
+        <p class="donate-panel-hint"><span class="lang-id">Anda akan diarahkan ke PayPal di tab baru.</span><span class="lang-en">You will be redirected to PayPal in a new tab.</span></p>
         <div class="donate-options">
           <a class="donate-option" href="https://www.paypal.com/ncp/payment/9V5Z4Z3E89E4J" target="_blank" rel="noopener noreferrer">
             <span class="donate-option-amount">$1</span>
-            <span class="donate-option-label">Donasi Kecil</span>
+            <span class="donate-option-label"><span class="lang-id">Donasi Kecil</span><span class="lang-en">Small Gift</span></span>
             <span class="donate-option-arrow" aria-hidden="true">→</span>
           </a>
           <a class="donate-option" href="https://www.paypal.com/ncp/payment/SYKQDPZEM9H96" target="_blank" rel="noopener noreferrer">
             <span class="donate-option-amount">$10</span>
-            <span class="donate-option-label">Donasi Pendukung</span>
+            <span class="donate-option-label"><span class="lang-id">Donasi Pendukung</span><span class="lang-en">Supporter</span></span>
             <span class="donate-option-arrow" aria-hidden="true">→</span>
           </a>
           <a class="donate-option featured" href="https://www.paypal.com/ncp/payment/6T84ZQWEX5FY2" target="_blank" rel="noopener noreferrer">
-            <span class="donate-option-badge">Populer</span>
+            <span class="donate-option-badge"><span class="lang-id">Populer</span><span class="lang-en">Popular</span></span>
             <span class="donate-option-amount">$50</span>
-            <span class="donate-option-label">Donasi Penggerak</span>
+            <span class="donate-option-label"><span class="lang-id">Donasi Penggerak</span><span class="lang-en">Champion</span></span>
             <span class="donate-option-arrow" aria-hidden="true">→</span>
           </a>
           <a class="donate-option" href="https://www.paypal.com/ncp/payment/7WMZ9ZPWF4DXY" target="_blank" rel="noopener noreferrer">
             <span class="donate-option-amount">$100</span>
-            <span class="donate-option-label">Donasi Pahlawan</span>
+            <span class="donate-option-label"><span class="lang-id">Donasi Pahlawan</span><span class="lang-en">Hero</span></span>
             <span class="donate-option-arrow" aria-hidden="true">→</span>
           </a>
         </div>
@@ -777,22 +949,25 @@
 
       <!-- BANK -->
       <div class="donate-tab-panel" role="tabpanel" id="tab-bank" aria-labelledby="tabBtn-bank" hidden>
-        <p class="donate-panel-hint">Transfer ke rekening berikut, lalu konfirmasi melalui halaman <a href="#contact" data-close-after>Kontak</a>.</p>
+        <p class="donate-panel-hint">
+          <span class="lang-id">Transfer ke rekening berikut, lalu konfirmasi melalui halaman <a href="#contact" data-close-after>Kontak</a>.</span>
+          <span class="lang-en">Transfer to the account below, then confirm via the <a href="#contact" data-close-after>Contact</a> page.</span>
+        </p>
         <div class="bank-card">
           <div class="bank-logo">BCA</div>
           <div class="bank-fields">
             <div class="bank-row">
-              <span class="bank-label">No. Rekening</span>
+              <span class="bank-label"><span class="lang-id">No. Rekening</span><span class="lang-en">Account No.</span></span>
               <div class="bank-value-wrap">
                 <span class="bank-value" id="bankAccount">8333279060</span>
-                <button type="button" class="copy-btn" data-copy-target="#bankAccount" aria-label="Salin nomor rekening">
+                <button type="button" class="copy-btn" data-copy-target="#bankAccount" aria-label="Copy account number / Salin nomor rekening">
                   <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M16 1H4a2 2 0 00-2 2v14h2V3h12V1zm3 4H8a2 2 0 00-2 2v14a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h11v14z" fill="currentColor"/></svg>
-                  <span class="copy-btn-label">Salin</span>
+                  <span class="copy-btn-label"><span class="lang-id">Salin</span><span class="lang-en">Copy</span></span>
                 </button>
               </div>
             </div>
             <div class="bank-row">
-              <span class="bank-label">Atas Nama</span>
+              <span class="bank-label"><span class="lang-id">Atas Nama</span><span class="lang-en">Account Holder</span></span>
               <span class="bank-value">Dede Kurnia Gusti</span>
             </div>
             <div class="bank-row">
@@ -805,29 +980,33 @@
 
       <!-- CRYPTO -->
       <div class="donate-tab-panel" role="tabpanel" id="tab-crypto" aria-labelledby="tabBtn-crypto" hidden>
-        <p class="donate-panel-hint">Pindai QR atau salin alamat berikut. Jaringan: EVM (Ethereum &amp; kompatibel).</p>
+        <p class="donate-panel-hint">
+          <span class="lang-id">Pindai QR atau salin alamat berikut. Jaringan: EVM (Ethereum &amp; kompatibel).</span>
+          <span class="lang-en">Scan the QR or copy the address below. Network: EVM (Ethereum &amp; compatible).</span>
+        </p>
         <div class="crypto-card">
           <div class="crypto-qr">
-            <img src="assets/img/crypto-qr.svg" alt="QR code alamat crypto" width="180" height="180" />
+            <img src="assets/img/crypto-qr.svg" alt="QR code for crypto wallet address" width="180" height="180" />
           </div>
           <div class="crypto-info">
-            <span class="crypto-label">Alamat Wallet</span>
+            <span class="crypto-label"><span class="lang-id">Alamat Wallet</span><span class="lang-en">Wallet Address</span></span>
             <div class="crypto-address-wrap">
               <code class="crypto-address" id="cryptoAddress">0x177C535CEC4451c0964E5f7Bea933e91a034F029</code>
-              <button type="button" class="copy-btn" data-copy-target="#cryptoAddress" aria-label="Salin alamat wallet">
+              <button type="button" class="copy-btn" data-copy-target="#cryptoAddress" aria-label="Copy wallet address / Salin alamat wallet">
                 <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M16 1H4a2 2 0 00-2 2v14h2V3h12V1zm3 4H8a2 2 0 00-2 2v14a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h11v14z" fill="currentColor"/></svg>
-                <span class="copy-btn-label">Salin</span>
+                <span class="copy-btn-label"><span class="lang-id">Salin</span><span class="lang-en">Copy</span></span>
               </button>
             </div>
             <p class="crypto-warn">
-              Pastikan Anda menggunakan jaringan yang benar sebelum mengirim.
+              <span class="lang-id">Pastikan Anda menggunakan jaringan yang benar sebelum mengirim.</span>
+              <span class="lang-en">Make sure you're on the correct network before sending.</span>
             </p>
           </div>
         </div>
       </div>
 
       <p class="donate-modal-foot">
-        <em>“Berbagi bukan tentang seberapa banyak, tapi tentang seberapa tulus.”</em>
+        <em><span class="lang-id">“Berbagi bukan tentang seberapa banyak, tapi tentang seberapa tulus.”</span><span class="lang-en">“Sharing is not about how much you give, but about how sincerely you give it.”</span></em>
       </p>
     </div>
   </div>
