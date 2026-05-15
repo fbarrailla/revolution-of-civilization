@@ -5,19 +5,45 @@
   /* ===== Mobile nav toggle ===== */
   var toggle = document.getElementById('navToggle');
   var nav = document.getElementById('primaryNav');
+  var backdrop = document.getElementById('navBackdrop');
+
+  var setNavOpen = function (open) {
+    if (!nav || !toggle) return;
+    nav.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+    document.body.classList.toggle('nav-open', open);
+    if (backdrop) {
+      if (open) {
+        backdrop.hidden = false;
+        // force reflow so the opacity transition kicks in
+        backdrop.offsetWidth;
+        backdrop.classList.add('is-open');
+      } else {
+        backdrop.classList.remove('is-open');
+        setTimeout(function () {
+          if (!nav.classList.contains('is-open')) backdrop.hidden = true;
+        }, 280);
+      }
+    }
+  };
+
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+      setNavOpen(!nav.classList.contains('is-open'));
     });
     nav.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
+      a.addEventListener('click', function () { setNavOpen(false); });
     });
   }
+  if (backdrop) {
+    backdrop.addEventListener('click', function () { setNavOpen(false); });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav && nav.classList.contains('is-open')) {
+      setNavOpen(false);
+    }
+  });
 
   /* ===== Sticky header shadow ===== */
   var header = document.getElementById('siteHeader');
